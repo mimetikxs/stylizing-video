@@ -46,3 +46,9 @@ output/
 
 deps/opencv/
 deps/opencv_contrib/
+
+build/
+
+.vscode
+
+data_nes/
