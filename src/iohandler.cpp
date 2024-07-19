@@ -140,37 +140,6 @@ void IOHandler::exportImages(const std::vector<std::shared_ptr<QImage>>& images,
     }
 }
 
-
-// Defaults to using _outputDir as the output directory.
-void IOHandler::exportAllFrames(const std::vector<std::shared_ptr<QImage>>& images)
-{
-    exportAllFrames(images, _outputDir);
-}
-
-// This function is meant for exporting the same number of images as input frames,
-// using the names/numbers of these frames as the filenames of the exported images.
-void IOHandler::exportAllFrames(const std::vector<std::shared_ptr<QImage>>& images, const fs::path outputDir)
-{
-    if (images.size() != _inputFrameNums.size()) {
-        std::cerr << "Error: Number of images to export does "
-                  << "not equal number of input frames." << std::endl;
-        return;
-    }
-
-    int padSize = calcNumDigits(images.size());
-
-    std::vector<fs::path> filenames;
-
-    // Export all images
-    for (uint i = 0; i < images.size(); ++i) {
-        QString filename = QString::number(_inputFrameNums.at(i)).rightJustified(padSize, '0');
-        filename.append(".jpg");
-
-        filenames.push_back(fs::path(filename.toStdString()));
-    }
-    exportImages(images, outputDir, filenames);
-}
-
 // Get the frame number associated to the input frame at index frameIdx
 int IOHandler::getInputFrameNum(int frameIdx)
 {

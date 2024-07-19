@@ -41,9 +41,6 @@ public:
                       const fs::path outputDir,
 					  const std::vector<fs::path>& filenames);
 
-    void exportAllFrames(const std::vector<std::shared_ptr<QImage>>& images);
-    void exportAllFrames(const std::vector<std::shared_ptr<QImage>>& images, const fs::path outputDir);
-
 	int getInputFrameNum(int frameIdx);
 	int getKeyframeNum(int keyframeIdx);
     std::vector<Sequence> getSequences(int keyframeIdx);

@@ -11,7 +11,6 @@
 #include <iostream>
 #include <QDebug>
 #include <QFileInfo>
-#define GENERATE false
 
 using namespace std;
 
