@@ -16,7 +16,7 @@ public:
     virtual ~Stylizer();
     void generateGuides(std::shared_ptr<QImage> key, Sequence& s);
     void run();
-    std::vector<cv::Mat> createMasks(Sequence& a, Sequence& b);
+    //std::vector<cv::Mat> createMasks(Sequence& a, Sequence& b);
 private:
     std::vector<std::shared_ptr<QImage>> m_frames;
     std::vector<std::shared_ptr<QImage>> m_keys;
@@ -25,13 +25,6 @@ private:
     std::vector<Sequence> m_seqs;
 
     IOHandler m_io;
-
-    std::vector<float> loadError(fs::path binary);
-    std::vector<cv::Mat> tempCoherence(std::vector<cv::Mat> masks, int begFrame);
-
-    void poissonBlend(std::vector<cv::Mat> &hp_blends, const std::vector<cv::Mat3f> &gradX, const std::vector<cv::Mat3f> &gradY, std::vector<cv::Mat> &out_frames); 
-
-    void copyKeyframes(Sequence &a, Sequence &b);
 };
 
 

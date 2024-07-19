@@ -19,6 +19,8 @@ QMAKE_CXXFLAGS += -msse2
 #LIBS += -fopenmp
 
 SOURCES += src/main.cpp \
+    src/fft_fsolver.cpp \
+    src/gradientblend.cpp \
     src/guide.cpp \
     src/gedge.cpp \
     src/gmask.cpp \
@@ -28,25 +30,21 @@ SOURCES += src/main.cpp \
     src/iohandler.cpp \
     src/RGBA.cpp \
     src/opencvutils.cpp \
-    src/advector.cpp \
-    src/fft_fsolver.cpp \
-    src/histogramblend.cpp \
-    src/gradientblend.cpp
+    src/advector.cpp
 
 HEADERS += src/guide.h \
+    src/fft_fsolver.h \
     src/gedge.h \
     src/gmask.h \
     src/gpos.h \
+    src/gradientblend.h \
     src/gtemp.h \
     src/stylizer.h \
     src/iohandler.h \
     src/RGBA.h \
     src/optical-flow/simpleflow.h \
     src/opencvutils.h \
-    src/advector.h \
-    src/fft_fsolver.h \
-    src/histogramblend.h \
-    src/gradientblend.h
+    src/advector.h
 
 INCLUDEPATH += lib/
 INCLUDEPATH += deps/ebsynth/include
