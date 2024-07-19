@@ -2,7 +2,7 @@
 ## Installation
 ### Requirements
 * Qt 5.2.0 or higher
-* [EbSynth](https://github.com/mimetikxs/ebsynth.git)
+* [EbSynth](https://github.com/mimetikxs/ebsynth/tree/b111b8fecf13ffa596e1f7b8573f2f31b1d38705)
 * [OpenCV 4.3.0](https://github.com/opencv/opencv/tree/4.3.0) + [opencv_contrib](https://github.com/opencv/opencv_contrib)
 * [FFTW 3.3.8 (or higher)](http://www.fftw.org/)
 * Mac: macOS 10.15 or higher, Xcode 11 with Command Line Tools
