@@ -21,7 +21,6 @@ private:
     std::vector<std::shared_ptr<QImage>> m_frames;
     std::vector<std::shared_ptr<QImage>> m_keys;
     std::vector<std::shared_ptr<QImage>> m_output;
-    std::vector<std::string> m_flowpaths;
     std::vector<Sequence> m_seqs;
 
     IOHandler m_io;
