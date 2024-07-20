@@ -68,17 +68,17 @@ void Stylizer::generateGuides(shared_ptr<QImage> keyframe, Sequence& s) {
         i1 = qimage_to_mat_ref((*m_frames.at(i-s.step)));
 		i2 = qimage_to_mat_ref((*m_frames.at(i)));
 
-                cvtColor(i1, i1, COLOR_BGRA2GRAY);
-                cvtColor(i2, i2, COLOR_BGRA2GRAY);
+        cvtColor(i1, i1, COLOR_BGRA2GRAY);
+        cvtColor(i2, i2, COLOR_BGRA2GRAY);
 
-                Mat2f out;
-                deepflow->calc(i1, i2, out);//calculateFlow(i1, i2, false, false);
-                cv::patchNaNs(out, 0);
+        Mat2f out;
+        deepflow->calc(i1, i2, out);//calculateFlow(i1, i2, false, false);
+        cv::patchNaNs(out, 0);
 
 		// if running through whole pipeline, store advection field
-        if (s.step > 0) {
-            serializeMatbin(out, m_io.getFlowPath(i));
-        }
+        //if (s.step > 0) {
+        //    serializeMatbin(out, m_io.getFlowPath(i));
+        //}
 
 		// get GPos and GTemp guides
 		gpos_cur.advect(mask, out);
