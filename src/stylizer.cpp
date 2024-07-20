@@ -1,10 +1,11 @@
 #include "stylizer.h"
 #include "opencv2/core/mat.hpp"
-#include "opencv2/highgui.hpp"
+//#include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include "opencvutils.h"
+#include "src/gpos.h"
 #include "optical-flow/simpleflow.h"
-#include <iostream>
+//#include <iostream>
 #include <QDebug>
 #include <QFileInfo>
 
@@ -21,11 +22,7 @@ Stylizer::~Stylizer(){
 }
 
 void Stylizer::run(){
-    //HistogramBlender hb;
-    //GradientBlender gb;
-    std::vector<shared_ptr<QImage>> output;
-    std::vector<fs::path> outfiles;
-    // Load in all Sequences, generate them, and then blend
+    // Load in all Sequences and generate them
     std::vector<Sequence> seqs;
     for (uint i = 0; i < m_keys.size(); i++){
         seqs = m_io.getSequences(i);
@@ -49,7 +46,7 @@ void Stylizer::generateGuides(shared_ptr<QImage> keyframe, Sequence& s) {
 
 	// filler mask for advection
 	mask->fill(Qt::white);
-	GPos gpos_start = GPos(mask);
+    GPos gpos_start = GPos(mask);
     fs::path pos_initial = fs::absolute(m_io.exportGuide(s, s.begFrame, gpos_start));
 	GPos gpos_cur = gpos_start;
 	Mat i1, i2;

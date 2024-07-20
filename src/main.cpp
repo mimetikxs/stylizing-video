@@ -4,15 +4,15 @@
 
 #include <unistd.h>
 #include <iostream>
-#include <filesystem>
+//#include <filesystem>
 #include <Eigen/Core>
 #include "stylizer.h"
 
 #include "iohandler.h"
-#include "opencvutils.h"
-#include "advector.h"
-#include "gpos.h"
-#include "fft_fsolver.h"
+//#include "opencvutils.h"
+//#include "advector.h"
+//#include "gpos.h"
+//#include "fft_fsolver.h"
 
 
 using namespace std;
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     QCommandLineOption binary("binary", "Specifies alternate EbSynth location.", "location", "deps/ebsynth/bin/ebsynth");
     parser.addOption(binary);
     parser.process(a);
-//    std::system("cd deps/ebsynth");
+    //std::system("cd deps/ebsynth");
 
     const QStringList args = parser.positionalArguments();
     if((args.size() != 3) && (args.size() != 5)) {
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         begFrame = args[3].toInt();
         endFrame = args[4].toInt();
     }
-   QString binaryLoc = parser.value(binary);
+    QString binaryLoc = parser.value(binary);
 
 
     // Check arguments' validity
@@ -65,16 +65,12 @@ int main(int argc, char *argv[])
     vector<std::shared_ptr<QImage>> inputFrames;
     vector<std::shared_ptr<QImage>> keyframes;
 
-    vector<std::shared_ptr<QImage>> advectedFrames;
-
     ioHandler.loadInputData(inputFrames, keyframes);
 
     Stylizer style(inputFrames, keyframes, ioHandler);
-//    style.generateGuides();
     style.run();
+
     a.exit();
-
-
 }
 
 

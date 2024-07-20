@@ -16,7 +16,7 @@ public:
     virtual ~Stylizer();
     void generateGuides(std::shared_ptr<QImage> key, Sequence& s);
     void run();
-    //std::vector<cv::Mat> createMasks(Sequence& a, Sequence& b);
+    
 private:
     std::vector<std::shared_ptr<QImage>> m_frames;
     std::vector<std::shared_ptr<QImage>> m_keys;
