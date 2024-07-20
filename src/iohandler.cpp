@@ -172,8 +172,8 @@ fs::path IOHandler::exportGuide(Sequence &s, int frameNum, Guide &g)
         fs::create_directory(guide);
     }
     int padSize = calcNumDigits(_inputFrameNums.size());
-    guide /= g.getType() + QString::number(frameNum).rightJustified(padSize, '0').toStdString()  + ".jpg";
-    g.getGuide()->save(QString::fromStdString(guide), "JPG");
+    guide /= g.getType() + QString::number(frameNum).rightJustified(padSize, '0').toStdString()  + ".png";
+    g.getGuide()->save(QString::fromStdString(guide), "PNG");
     return guide;
 }
 
