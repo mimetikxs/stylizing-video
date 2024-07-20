@@ -1,9 +1,9 @@
 #include "advector.h"
 #include "gpos.h"
-#include "gradientblend.h"
+//#include "gradientblend.h"
 #include "opencvutils.h"
 #include "opencv2/photo.hpp"
-#include "fft_fsolver.h"
+//#include "fft_fsolver.h"
 
 #include <QLinearGradient>
 #include <QPainter>

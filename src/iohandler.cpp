@@ -62,12 +62,12 @@ void IOHandler::collectImageFilepaths()
         }
     }
 
-    auto sorter = 
-         [](const fs::path& s1, const fs::path& s2) {
+    auto sorter =
+        [](const fs::path& s1, const fs::path& s2) {
         std::string s1stem = s1.stem();
         std::string s2stem = s2.stem();
             return std::lexicographical_compare(s1stem.begin(), s1stem.end(), s2stem.begin(), s2stem.end());
-         };
+        };
 
     // Sort frames based on frame number
     sort(_inputFramePaths.begin(), _inputFramePaths.end(), sorter);
@@ -131,12 +131,12 @@ void IOHandler::exportImages(const std::vector<std::shared_ptr<QImage>>& images,
     fs::path outPath;
     // Export all images
     for (uint i = 0; i < images.size(); ++i) {
-	fs::path filename = filenames.at(i);
-    filename.replace_extension(".png");
-	outPath = outputDir;
-    outPath /= filename;
-	std::cout << outPath << std::endl;
-    std::cout << images.at(i)->save(QString::fromStdString(outPath), "PNG") << " for image " << i << std::endl;
+        fs::path filename = filenames.at(i);
+        filename.replace_extension(".png");
+        outPath = outputDir;
+        outPath /= filename;
+        std::cout << outPath << std::endl;
+        std::cout << images.at(i)->save(QString::fromStdString(outPath), "PNG") << " for image " << i << std::endl;
     }
 }
 
@@ -191,22 +191,20 @@ fs::path IOHandler::getOutputPath(Sequence &s, int frameNum)
    return frame;
 }
 
-fs::path IOHandler::getErrorPath(Sequence &s, int frameNum)
-{
-    fs::path error = s.outputDir;
-    error /=  QString::number(frameNum).rightJustified(s.numDigits, '0').toStdString() + ".bin";
+// fs::path IOHandler::getErrorPath(Sequence &s, int frameNum)
+// {
+//     fs::path error = s.outputDir;
+//     error /=  QString::number(frameNum).rightJustified(s.numDigits, '0').toStdString() + ".bin";
+//     return error;
+// }
 
-    return error;
-}
-
-fs::path IOHandler::getFlowPath(int frameNum)
-{
-    fs::path flow = _outputDir;
-    int padSize = calcNumDigits(_inputFrameNums.size());
-    flow /= QString::number(frameNum).rightJustified(padSize, '0').toStdString() + ".matbin";
-
-    return flow;
-}
+// fs::path IOHandler::getFlowPath(int frameNum)
+// {
+//     fs::path flow = _outputDir;
+//     int padSize = calcNumDigits(_inputFrameNums.size());
+//     flow /= QString::number(frameNum).rightJustified(padSize, '0').toStdString() + ".matbin";
+//     return flow;
+// }
 
 // Calculates the number of digits needed to represent a number in base 10.
 // Useful for the naming of exported image files.
@@ -219,7 +217,7 @@ int IOHandler::calcNumDigits(int num)
            (num < 1000000 ? 6 :
            (num < 10000000 ? 7 :
            (num < 100000000 ? 8 :
-                              (num < 1000000000 ? 9 : 10))))))));
+           (num < 1000000000 ? 9 : 10))))))));
 }
 
 fs::path IOHandler::getBinaryLocation() const
@@ -278,20 +276,20 @@ std::vector<Sequence> IOHandler::getSequences(int keyframeIdx) {
             return std::vector<Sequence>({makeSequence(_endFrame, _keyframeNums.at(keyframeIdx - 1), -1, keyframeIdx)});
         }
     } else {
-            if (_keyframeNums.size() == 1) {
-                  return std::vector<Sequence>({makeSequence(keyframeNum, _begFrame, -1, keyframeIdx),
-                                                                    makeSequence(keyframeNum, _endFrame, 1, keyframeIdx)});
-             } else if (keyframeIdx == 0) {
-                return std::vector<Sequence>({makeSequence(keyframeNum, _begFrame, -1, keyframeIdx),
-                                                                  makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx + 1), 1, keyframeIdx)});
-             } else if (keyframeIdx == _keyframeNums.size() - 1) {
-                return std::vector<Sequence>({makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx - 1), -1, keyframeIdx),
-                                                                  makeSequence(keyframeNum, _endFrame, 1, keyframeIdx)});
-            } else {
-                return std::vector<Sequence>({makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx - 1), -1, keyframeIdx),
-                                                                  makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx + 1), 1, keyframeIdx)});
-            }
+        if (_keyframeNums.size() == 1) {
+              return std::vector<Sequence>({makeSequence(keyframeNum, _begFrame, -1, keyframeIdx),
+                                                                makeSequence(keyframeNum, _endFrame, 1, keyframeIdx)});
+         } else if (keyframeIdx == 0) {
+            return std::vector<Sequence>({makeSequence(keyframeNum, _begFrame, -1, keyframeIdx),
+                                                              makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx + 1), 1, keyframeIdx)});
+         } else if (keyframeIdx == _keyframeNums.size() - 1) {
+            return std::vector<Sequence>({makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx - 1), -1, keyframeIdx),
+                                                              makeSequence(keyframeNum, _endFrame, 1, keyframeIdx)});
+        } else {
+            return std::vector<Sequence>({makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx - 1), -1, keyframeIdx),
+                                                              makeSequence(keyframeNum, _keyframeNums.at(keyframeIdx + 1), 1, keyframeIdx)});
         }
+    }
 }
 
 

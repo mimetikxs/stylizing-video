@@ -47,9 +47,9 @@ public:
 	std::vector<int> getInputFrameNums();
 	std::vector<int> getKeyframeNums();
     fs::path exportGuide(Sequence& s, int frameNum, Guide& g);
-   static fs::path getOutputPath(Sequence& s, int frameNum);
-   static fs::path getErrorPath(Sequence &s, int frameNum);
-   fs::path getFlowPath(int frameNum);
+    static fs::path getOutputPath(Sequence& s, int frameNum);
+    //static fs::path getErrorPath(Sequence &s, int frameNum);
+    //fs::path getFlowPath(int frameNum);
 
     fs::path getInputPath(Sequence &s, int frameNum);
     fs::path getBinaryLocation() const;

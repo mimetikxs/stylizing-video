@@ -1,13 +1,7 @@
 #include "stylizer.h"
-#include "opencv2/core/mat.hpp"
-//#include "opencv2/highgui.hpp"
-#include "opencv2/imgproc.hpp"
 #include "opencvutils.h"
 #include "src/gpos.h"
 #include "optical-flow/simpleflow.h"
-//#include <iostream>
-#include <QDebug>
-#include <QFileInfo>
 
 using namespace std;
 
@@ -100,7 +94,7 @@ void Stylizer::generateGuides(shared_ptr<QImage> keyframe, Sequence& s) {
         std::string command = m_io.getBinaryLocation().string() + " -style " + fs::absolute(s.keyframePath).string();
         command += " -guide " + edge_initial.string() +  " " + edge_cur.string() + " -weight 0.5 ";
 
-		//        command.append("-guide " + g_mask1 + " " + g_mask2 + " -weight 6 ");
+        //command.append("-guide " + g_mask1 + " " + g_mask2 + " -weight 6 ");
 
         command+="-guide " + color_initial.string() +  " " + color_cur.string() + " -weight 6 ";
 

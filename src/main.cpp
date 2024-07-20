@@ -4,15 +4,10 @@
 
 #include <unistd.h>
 #include <iostream>
-//#include <filesystem>
 #include <Eigen/Core>
 #include "stylizer.h"
 
 #include "iohandler.h"
-//#include "opencvutils.h"
-//#include "advector.h"
-//#include "gpos.h"
-//#include "fft_fsolver.h"
 
 
 using namespace std;
