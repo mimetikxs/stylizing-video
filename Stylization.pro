@@ -38,6 +38,7 @@ HEADERS += src/guide.h \
     src/gmask.h \
     src/gpos.h \
     src/gtemp.h \
+    src/serialize.h \
     src/stylizer.h \
     src/iohandler.h \
     src/RGBA.h \
